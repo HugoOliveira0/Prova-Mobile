@@ -18,11 +18,13 @@ export default function Cadastro() {
     async function getCadastro() {
         try {
             setLoading(true);
-            if (!nome || !email || !telefone || !dataNascimento) {
-                return Alert.alert('Atenção', 'Digite os campos obrigatórios');
-            }
-
             setTimeout(() => {
+                if (!nome || !email || !telefone || !dataNascimento) {
+                    Alert.alert('Atenção', 'Digite os campos obrigatórios');
+                    setLoading(false);
+                    return;
+                }
+
                 if (nome === 'Hugo' && email === 'hugo@exemplo.com' && telefone.replace(/\D/g, '') === '11123456789' && dataNascimento === '01/01/2000') {
                     Alert.alert('Erro', 'Usuário já cadastrado');
                 } else {
